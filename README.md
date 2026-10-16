@@ -375,8 +375,3 @@ The current project outputs have previously reported the following exploratory r
 This repository is intended as a learning and portfolio project demonstrating a workflow across data cleaning, exploratory analysis, SQL, dashboards, and introductory machine learning.
 
 **Current status:** Core analysis assets and the Power BI file are present. Final delivery metrics still need the status-filter correction described above, and Power BI refresh should be checked in the target environment. The written report and presentation are planned follow-up deliverables.
-
----
-
-If you use this project in a portfolio, describe model results honestly, explain the business meaning of the metrics, and call out the limitations. A clear explanation of assumptions and validation is more valuable than claiming that an experimental model is production-ready.
-

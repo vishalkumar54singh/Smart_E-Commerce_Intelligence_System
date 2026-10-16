@@ -1,0 +1,4 @@
+metric,value
+Orders Analyzed,96461.0
+Isolation Forest Anomalies,1930.0
+Isolation Forest Anomaly Rate,2.0

@@ -1,0 +1,6 @@
+metric,value
+Forecast Horizon,30 days
+Total Forecasted Orders,3214
+Average Daily Forecast,107.13
+Minimum Daily Forecast,44
+Maximum Daily Forecast,136
