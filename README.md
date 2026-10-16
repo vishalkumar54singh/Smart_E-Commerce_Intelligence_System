@@ -1,133 +1,68 @@
 # Smart E-Commerce Demand & Operations Intelligence System
 
-An end-to-end data analytics project built with the Brazilian Olist e-commerce public dataset. The project brings together Python, SQL, machine learning, and Power BI to explore order demand, customer behavior, product performance, seller activity, delivery operations, and potential business risks.
+An end-to-end data analytics and business intelligence project built using the Brazilian Olist e-commerce dataset. This project combines **Python, SQL, Machine Learning, and Power BI** to analyze sales demand, customer behavior, product performance, and delivery operations.
 
-> **Important scope note:** The project folder name includes “Smart E-Commerce”; the data is about Brazilian e-commerce, not smart-city or urban sensor demand. The forecasts are exploratory estimates from historical order counts, not a production forecasting service. Customer “churn” is represented by an inactivity-based proxy label, not a confirmed business churn outcome.
+## 📌 Project Overview
 
-## Dataset link :- https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+The project transforms raw e-commerce data into meaningful business insights through data cleaning, exploratory data analysis, SQL analytics, machine learning experiments, and interactive dashboards.
 
-## Table of contents
+**Objectives:**
 
-- [1. Project at a glance](#1-project-at-a-glance)
-- [2. Business problem](#2-business-problem)
-- [3. Project objectives](#3-project-objectives)
-- [4. Dataset](#4-dataset)
-- [5. Tools and technologies](#5-tools-and-technologies)
-- [6. Repository structure](#6-repository-structure)
-- [7. How the project works](#7-how-the-project-works)
-- [8. Setup and prerequisites](#8-setup-and-prerequisites)
-- [9. Run the Python notebooks](#9-run-the-python-notebooks)
-- [10. Run the SQL analysis](#10-run-the-sql-analysis)
-- [11. Explore the Power BI report](#11-explore-the-power-bi-report)
-- [12. Machine-learning and intelligence modules](#12-machine-learning-and-intelligence-modules)
-- [13. Outputs and how to interpret them](#13-outputs-and-how-to-interpret-them)
-- [14. KPI definitions](#14-kpi-definitions)
-- [15. Current findings](#15-current-findings)
-- [16. Limitations and validation notes](#16-limitations-and-validation-notes)
-- [17. Troubleshooting](#17-troubleshooting)
-- [18. Author and project status](#19-author-and-project-status)
+- Analyze order trends and sales performance.
+- Understand customer purchasing behavior.
+- Identify high-performing product categories and locations.
+- Evaluate delivery performance and operational efficiency.
+- Experiment with demand forecasting and anomaly detection.
+- Present key insights through Power BI dashboards.
 
-## 1. Project at a glance
+## 🛠️ Technologies Used
 
-| Item | Description |
-|---|---|
-| Project type | End-to-end data analytics and business intelligence |
-| Domain | E-commerce operations and customer/product analytics |
-| Dataset | Brazilian Olist e-commerce public dataset |
-| Main tools | Python, pandas, scikit-learn, MySQL, Power BI, Jupyter Notebook |
-| Analysis areas | Orders, demand, customers, products, sellers, payments, reviews, delivery, anomalies |
-| Main deliverable | Power BI report supported by Python notebooks, SQL scripts, charts, tables, and prediction files |
+| Technology           | Purpose                                   |
+| -------------------- | ----------------------------------------- |
+| Python               | Data analysis and preprocessing           |
+| Pandas & NumPy       | Data manipulation and feature engineering |
+| Matplotlib & Seaborn | Data visualization                        |
+| Scikit-learn         | Machine learning experiments              |
+| MySQL                | Database management and SQL analytics     |
+| Jupyter Notebook     | Interactive analysis                      |
+| Power BI             | Business intelligence and dashboards      |
 
-## 2. Business problem
+## 📊 Dataset
 
-An e-commerce business generates information across orders, customers, products, sellers, payments, reviews, and deliveries. Looking at each dataset independently makes it difficult to answer practical questions such as:
+**Source:** [Brazilian E-Commerce Public Dataset by Olist — Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
-- How does order demand change over time?
-- Which product categories generate the most sales revenue and units sold?
-- Which states contribute the most orders and customer revenue?
-- How long do deliveries take, and how often do delivered orders miss their estimated delivery date?
-- What do customer purchasing patterns suggest about repeat purchasing and inactivity?
-- Can historical order counts provide a useful short-term demand baseline?
-- Which orders have unusual financial or operational patterns that deserve investigation?
+The dataset contains information about orders, customers, products, sellers, payments, reviews, and deliveries from the Brazilian e-commerce marketplace.
 
-This project combines data preparation, SQL analysis, machine learning experiments, and dashboard reporting to help explore these questions.
+## ✨ Key Features
 
-## 3. Project objectives
+- **Data Cleaning:** Prepare and standardize raw datasets for analysis.
+- **Exploratory Data Analysis:** Discover trends, patterns, and relationships.
+- **Customer Analytics:** Explore purchasing behavior and customer segments.
+- **Product Intelligence:** Analyze category performance, sales, and seller activity.
+- **Operations Analytics:** Examine delivery duration and estimated delivery performance.
+- **Demand Forecasting:** Experiment with historical order data to estimate future demand.
+- **Anomaly Detection:** Identify unusual order patterns for further investigation.
+- **Power BI Dashboard:** Present business metrics and analytical insights visually.
 
-1. Load and understand the raw Olist tables.
-2. Clean and standardize data types, column names, duplicate records, and selected missing values.
-3. Explore the dataset with summary statistics and visualizations.
-4. Create customer- and order-level features for analysis.
-5. Use SQL to answer business questions and prepare analytical views.
-6. Build Power BI pages that summarize business performance.
-7. Experiment with demand forecasting, customer inactivity risk, and anomaly detection.
-8. Store reproducible charts, tables, and prediction outputs in a structured folder.
-
-## 4. Dataset (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
-
-The project uses nine CSV files from the public Olist Brazilian e-commerce dataset, commonly distributed through Kaggle. The data represents orders and related marketplace activity in Brazil, primarily from 2016–2018.
-
-| Raw file | What it contains |
-|---|---|
-| `olist_customers_dataset.csv` | Customer IDs and customer location fields |
-| `olist_geolocation_dataset.csv` | ZIP-code-level latitude, longitude, city, and state information |
-| `olist_orders_dataset.csv` | Order status and key order timestamps |
-| `olist_order_items_dataset.csv` | Products, sellers, item prices, and freight for each order item |
-| `olist_order_payments_dataset.csv` | Payment method, installments, and payment value |
-| `olist_order_reviews_dataset.csv` | Review scores and review comments |
-| `olist_products_dataset.csv` | Product categories and product attributes |
-| `olist_sellers_dataset.csv` | Seller IDs and seller locations |
-| `product_category_name_translation.csv` | Portuguese-to-English product category names |
-
-The `01_Raw_Data/` folder contains the original CSV inputs. The `02_Clean_Data/` folder contains the processed versions used by later notebooks and SQL scripts. Keep raw data unchanged so cleaning can be repeated and audited.
-
-**Data handling note:** Customer and seller identifiers are dataset identifiers, not real-world names. Avoid attempting to re-identify individuals. If you redistribute the dataset, check the source's terms and attribution requirements.
-
-## 5. Tools and technologies
-
-- **Python:** general analysis and automation.
-- **pandas / NumPy:** data loading, cleaning, joins, grouping, and feature creation.
-- **Matplotlib / Seaborn:** exploratory charts and saved visual outputs.
-- **scikit-learn:** Random Forest forecasting experiment, Random Forest classification, feature scaling, and Isolation Forest anomaly detection.
-- **Jupyter Notebook:** step-by-step, inspectable analysis.
-- **MySQL:** relational tables, joins, aggregations, KPI queries, and Power BI-oriented views.
-- **Power BI Desktop:** interactive report pages and business-facing summaries.
-
-A typical Python environment can be prepared with:
-
-```bash
-python -m venv .venv
-```
-
-Activate it, then install the core packages:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install pandas numpy matplotlib seaborn scikit-learn jupyter ipykernel
-```
-
-If you use a different Python environment, install the same packages there. The SQL scripts require a compatible MySQL server/client, and the `.pbix` report requires Power BI Desktop for full interaction.
-
-## 6. Repository structure
+## 📁 Project Structure
 
 ```text
 Smart_E-Commerce_Demand_&_Operations_Intelligence_System/
-├── README.md                         # Project guide (this file)
-├── 01_Raw_Data/                      # Original Olist CSV files
-├── 02_Clean_Data/                    # Cleaned CSV files used downstream
+├── 01_Raw_Data/
+├── 02_Clean_Data/
 ├── 03_Python/
-│   ├── 01_data_loading.ipynb         # Load and inspect raw datasets
-│   ├── 02_data_cleaning.ipynb         # Standardize and clean data
-│   ├── 03_EDA.ipynb                  # Exploratory data analysis and charts
-│   └── 04_feature_engineering.ipynb   # Customer/order-level features
+│   ├── 01_data_loading.ipynb
+│   ├── 02_data_cleaning.ipynb
+│   ├── 03_EDA.ipynb
+│   └── 04_feature_engineering.ipynb
 ├── 04_SQL/
-│   ├── 00_database_setup.sql         # Create schema/tables and load CSV data
-│   ├── 01_basic_analysis.sql         # General order and business analysis
-│   ├── 02_customer_analysis.sql      # Customer-level analysis and segments
-│   ├── 03_product_analysis.sql       # Product/category performance
-│   ├── 04_delivery_analysis.sql     # Delivery and operational analysis
-│   ├── 05_Business_kpis.sql          # Business KPI queries
-│   └── 06_powerbi_views.sql          # Views intended to support Power BI
+│   ├── 00_database_setup.sql
+│   ├── 01_basic_analysis.sql
+│   ├── 02_customer_analysis.sql
+│   ├── 03_product_analysis.sql
+│   ├── 04_delivery_analysis.sql
+│   ├── 05_Business_kpis.sql
+│   └── 06_powerbi_views.sql
 ├── 05_Power_BI/
 │   └── Smart_Demand_Intelligence.pbix
 ├── 06_ML/
@@ -136,89 +71,90 @@ Smart_E-Commerce_Demand_&_Operations_Intelligence_System/
 │   ├── 07_demand_forecasting.ipynb
 │   ├── 08_customer_churn.ipynb
 │   └── 09_anomaly_detection.ipynb
-├── 07_Reports/                       # Reserved for the final written report
-├── 08_Presentation/                  # Reserved for the final presentation
-└── 09_Outputs/
-    ├── charts/                       # PNG charts generated by notebooks
-    ├── tables/                       # CSV summaries and analytical tables
-    └── predictions/                   # Forecasts, risk outputs, anomaly labels
+├── 07_Reports/
+├── 08_Presentation/
+├── 09_Outputs/
+└── README.md
 ```
 
-Some notebooks save files into `09_Outputs/`. If you change the project folder name or move it to another computer, update the path variables at the beginning of each notebook (see the setup section below).
+## ⚙️ Getting Started
 
-## 7. How the project works
+### Prerequisites
 
-```text
-Raw Olist CSV files
-        ↓
-Load and inspect datasets (01_data_loading.ipynb)
-        ↓
-Clean and standardize data (02_data_cleaning.ipynb)
-        ↓
-Clean CSV files in 02_Clean_Data/
-        ├──→ Exploratory analysis and charts (03_EDA.ipynb)
-        ├──→ Customer/order features (04_feature_engineering.ipynb)
-        ├──→ MySQL tables and SQL analyses (04_SQL/)
-        └──→ Product, operations, forecasting, inactivity-risk,
-             and anomaly experiments (06_ML/)
-                         ↓
-           Tables, charts, and prediction CSVs
-                         ↓
-             Power BI report and interpretation
+- Python 3
+- Jupyter Notebook
+- MySQL Server and MySQL Workbench (for SQL analysis)
+- Power BI Desktop (for dashboard exploration)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System.git
+cd Smart_E-Commerce_Intelligence_System
 ```
 
-The Python, SQL, and Power BI components serve different purposes: Python prepares and investigates the data, SQL makes relational queries and reusable views possible, and Power BI presents selected metrics in an interactive format.
+### 2. Install Python dependencies
 
-## 8. Setup and prerequisites
+```bash
+python -m venv .venv
+```
 
-### Step 1 — Install Python packages
+Activate the environment on Windows:
 
-Install the packages listed in [Tools and technologies](#5-tools-and-technologies). Then start Jupyter from the project environment:
+```bash
+.venv\Scripts\activate
+```
+
+Install the required packages:
+
+```bash
+python -m pip install pandas numpy matplotlib seaborn scikit-learn jupyter ipykernel
+```
+
+### 3. Run the notebooks
+
+Start Jupyter Notebook:
 
 ```bash
 jupyter notebook
 ```
 
-Open notebooks from their numbered folders. Run them in the recommended order in the next section.
+Run the notebooks in `03_Python/` in numerical order, followed by the relevant notebooks in `06_ML/`.
 
-### Step 2 — Set up MySQL if you want to run SQL
+### 4. Run the SQL analysis
 
-Install/start MySQL and open `04_SQL/00_database_setup.sql` in MySQL Workbench or a compatible SQL client. Review the file before running it. It creates the `smart_demand_intelligence` database and tables, then contains `LOAD DATA LOCAL INFILE` commands that import cleaned CSV files.
+1. Open the SQL scripts in MySQL Workbench.
+2. Review the database setup script and update CSV file paths.
+3. Import the required data into MySQL.
+4. Execute the analysis scripts.
 
-The SQL setup script includes a machine-specific CSV path. Change each path to the actual location of your `02_Clean_Data/` folder before executing. MySQL client/server settings may need to allow local file imports; enable this only if it is permitted in your environment. Run the setup against a local development database, not a production database.
+### 5. Open the Power BI report
 
-### Step 3 — Open Power BI
+Open `05_Power_BI/Smart_Demand_Intelligence.pbix` in Power BI Desktop. Configure the data source and refresh the report if required.
 
-Open `05_Power_BI/Smart_Demand_Intelligence.pbix` with Power BI Desktop. If it connects to MySQL, check the data source settings and update the server/database credentials for your own machine. If a refresh fails, inspect the connection and data source configuration before changing the report.
+## 📈 Outputs
 
-## 9. Run the Python notebooks
+The `09_Outputs/` directory organizes generated analytical results:
 
-Run the notebooks in this order where possible:
+- `charts/` — visualizations and analytical charts.
+- `tables/` — summary tables and CSV reports.
+- `predictions/` — demand forecasts, customer inactivity-risk predictions, and anomaly detection results.
 
-1. **`03_Python/01_data_loading.ipynb`** — loads the nine raw files, displays shapes, column names, and sample records. It is primarily an inspection notebook.
-2. **`03_Python/02_data_cleaning.ipynb`** — standardizes column names, checks/removes duplicate rows, converts relevant date fields, handles selected missing values, and writes cleaned CSV files to `02_Clean_Data/`.
-3. **`03_Python/03_EDA.ipynb`** — summarizes the cleaned data and produces exploratory charts and KPI/missing-value summaries in `09_Outputs/`.
-4. **`03_Python/04_feature_engineering.ipynb`** — builds order-level and customer-level features used to explore purchasing behavior and customer value.
-5. **`06_ML/05_product_location_intelligence.ipynb`** — examines category, seller, and geographic patterns.
-6. **`06_ML/06_operations_intelligence.ipynb`** — creates order-level operational features and delivery/SLA summaries.
-7. **`06_ML/07_demand_forecasting.ipynb`** — creates daily order counts, evaluates a seasonal-naive baseline against a Random Forest model, and produces a 30-day forecast.
-8. **`06_ML/08_customer_churn.ipynb`** — builds an exploratory inactivity-risk label and classification experiment.
-9. **`06_ML/09_anomaly_detection.ipynb`** — applies rule-based IQR flags and Isolation Forest to identify unusual order-level patterns.
+## ⚠️ Limitations
 
-Some ML notebooks rely on the cleaned CSVs, so run data loading/cleaning first if regenerating the project from raw files. Run notebooks from top to bottom and inspect the printed row counts and saved-file messages. Existing notebook outputs are examples of a prior run and may not match if you change data, paths, packages, or code.
+- The analysis is based on historical Brazilian e-commerce data and may not generalize to other markets.
+- Demand forecasts are exploratory estimates, not production forecasting services.
+- Customer inactivity is a proxy label, not confirmed customer churn.
+- Anomaly detection identifies unusual patterns, not confirmed fraud.
+- Delivery metrics and dashboard data connections should be validated before final reporting.
 
-## 10. Run the SQL analysis
+## 🚀 Project Status
 
-The SQL files are organized by purpose:
+The repository brings together data analysis, SQL, machine learning experiments, and Power BI reporting. Further validation and refinement of analytical results and dashboard connections remain part of the project workflow.
 
-- `00_database_setup.sql`: create the database/tables and import cleaned CSVs.
-- `01_basic_analysis.sql`: broad order, revenue, and general performance queries.
-- `02_customer_analysis.sql`: customer behavior and segmentation queries.
-- `03_product_analysis.sql`: category and product performance queries.
-- `04_delivery_analysis.sql`: delivery duration and delivery status/SLA analysis.
-- `05_Business_kpis.sql`: consolidated business KPI calculations.
-- `06_powerbi_views.sql`: reusable SQL views intended to support Power BI reporting.
+---
 
+<<<<<<< HEAD
 Recommended process:
 
 1. Review and update the local file paths in `00_database_setup.sql`.
@@ -377,3 +313,4 @@ The current project outputs have previously reported the following exploratory r
 This repository is intended as a learning and portfolio project demonstrating a workflow across data cleaning, exploratory analysis, SQL, dashboards, and introductory machine learning.
 
 **Current status:** Core analysis assets and the Power BI file are present. Final delivery metrics still need the status-filter correction described above, and Power BI refresh should be checked in the target environment. The written report and presentation are planned follow-up deliverables.
+**Dataset:** [Kaggle — Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
