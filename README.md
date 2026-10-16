@@ -324,6 +324,8 @@ The current project outputs have previously reported the following exploratory r
 - The data is historical and specific to the Olist marketplace in Brazil; results do not automatically generalize to other countries or businesses.
 - The notebook paths and SQL import paths are machine-specific and need configuration on another computer.
 - Demand forecasting is a basic experiment and should be improved with more robust time-series validation, holiday/event features, and additional baselines.
+
+  https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/Smart_Demand_Intelligence.pbix
 - The inactivity label is a proxy based on historical recency, not a confirmed churn label. Model performance is modest.
 - Anomaly models identify unusual patterns, not confirmed fraud.
 - Delivery calculations need the delivered-status filter described above before final reporting.
