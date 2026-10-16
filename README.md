@@ -170,11 +170,11 @@ Be careful when combining order-level and item-level data. An order can contain 
 The PBIX file is intended to contain six pages:
 
 1. **Executive Overview** — high-level KPIs and business summary. ![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/01.png)
-2. **Demand Intelligence** — demand patterns over time and forecast outputs.
-3. **Customer Intelligence** — customer behavior, segments, and inactivity-risk summaries.
-4. **Product Intelligence** — category, product, and seller performance.
-5. **Operations Intelligence** — delivery and operational metrics.
-6. **AI / ML Intelligence** — model comparisons and anomaly/risk outputs.
+2. **Demand Intelligence** — demand patterns over time and forecast outputs.  ![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/02.png)
+3. **Customer Intelligence** — customer behavior, segments, and inactivity-risk summaries.![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/03.png)
+4. **Product Intelligence** — category, product, and seller performance.![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/04.png)
+5. **Operations Intelligence** — delivery and operational metrics.![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/05.png)
+6. **AI / ML Intelligence** — model comparisons and anomaly/risk outputs.![Dashboard Preview](https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/06.png)
 
 Page titles describe the intended focus; exact visuals, filters, and available data depend on the PBIX version and whether its data sources refresh successfully. Before presenting, open the file in Power BI Desktop, refresh the data if possible, and check that each page renders correctly. Do not assume that a saved PBIX is connected to your current MySQL instance until you test it.
 
