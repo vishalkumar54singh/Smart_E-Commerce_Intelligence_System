@@ -169,7 +169,7 @@ Be careful when combining order-level and item-level data. An order can contain 
 
 The PBIX file is intended to contain six pages:
 
-1. **Executive Overview** — high-level KPIs and business summary.
+1. **Executive Overview** — high-level KPIs and business summary.(https://github.com/vishalkumar54singh/Smart_E-Commerce_Intelligence_System/blob/main/05_Power_BI/01.png)
 2. **Demand Intelligence** — demand patterns over time and forecast outputs.
 3. **Customer Intelligence** — customer behavior, segments, and inactivity-risk summaries.
 4. **Product Intelligence** — category, product, and seller performance.
